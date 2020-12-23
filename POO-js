@@ -1,0 +1,71 @@
+/*POO en JS
+
+A)realizar un sistema donde te permita ver las caracteristicas de 3 celulares
+-color,peso,tamaño,resolucion de camara,memoria ram
+B)Implementar al sistema celulares de Alta Gama (Lector de huella, reconociento facial)
+*/
+
+class celular {
+    constructor(color, peso, tamaño, rdc, ram) {
+        this.color = color,
+            this.peso = peso,
+            this.tamaño = tamaño,
+            this.resulucionDeCamara = rdc,
+            this.memoriaRam = ram
+        this.encendido = false;
+    }
+  
+   //Metodo Para Mostrar Caracteristicas 
+   mostrarInfo() {
+        return `
+            color: <b>${this.color}</b> </br>
+            peso: <b>${this.peso}</b></br>
+            tamaño: <b>${this.tamaño}</b></br>
+            resolucion de camara: <b>${this.resulucionDeCamara}</b></br>
+            memoria Ram: <b>${this.memoriaRam}</b></br>
+    
+            `;
+    }
+    
+}
+
+class celularAltaGama extends celular {
+    constructor(color, peso, tamaño, rdc, ram, ldh, rf) {
+        super(color, peso, tamaño, rdc, ram)
+
+        this.lectorDeHuella = ldh;
+        this.reconocimientoFacial = rf;
+    }
+    //Metodo Para Mostrar Caracteristicas Alta Gama
+    mostrarInfoAltaGama() {
+        return this.mostrarInfo() +
+        `Lector de Huella: <b>${this.lectorDeHuella}</b> </br>
+        Reconocimiento Facial :<b>${this.reconocimientoFacial}</b></br>`
+   
+}
+
+}
+
+//celulares
+cel1 = new celular("Blanco", "150g", "7 pulgadas", "24MP", "4GB");
+cel2 = new celular("Negro", "170g", "6.5 pulgadas", "20MP", "4GB");
+cel3 = new celular("Plateado", "180g", "5.5 pulgadas", "15MP", "2GB");
+
+//CELULARES ALTA GAMA
+celAg1 = new celularAltaGama("Blanco", "150g", "5 pulgadas", "30MP", "8GB", "si", "no");
+celAg2 = new celularAltaGama("gris", "130g", "6 pulgadas", "50MP", "16GB", "si", "si");
+celAg3 = new celularAltaGama("Negro", "180g", "6.3 pulgadas", "20MP", "8GB", "no", "si");
+celAg4 = new celularAltaGama("Blanco", "140g", "8 pulgadas", "35MP", "32GB", "si", "si");
+
+//DOM
+document.write(`
+${cel1.mostrarInfo()} </br>
+${cel2.mostrarInfo()} </br>
+${cel3.mostrarInfo()} </br>
+${celAg1.mostrarInfoAltaGama()} </br>
+${celAg2.mostrarInfoAltaGama()} </br>
+${celAg3.mostrarInfoAltaGama()} </br>
+${celAg4.mostrarInfoAltaGama()} </br>
+
+
+`)
